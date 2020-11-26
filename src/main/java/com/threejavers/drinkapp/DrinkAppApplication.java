@@ -1,4 +1,4 @@
-package com.ThreeJavers.DrinkApp;
+package com.threejavers.drinkapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
