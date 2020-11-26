@@ -26,4 +26,8 @@ public class DrinkController {
         return drinkService.getSingleDrink(id);
 
     }
+    @GetMapping("/drinki")
+    public List<Drink> getListOfDrinks(){
+        return (List<Drink>) drinkService.getDrink();
+    }
 }

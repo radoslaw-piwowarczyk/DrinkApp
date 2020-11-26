@@ -1,8 +1,10 @@
 package com.threejavers.drinkapp.service;
 
+import com.threejavers.drinkapp.DTO.DrinkDTO;
 import com.threejavers.drinkapp.model.Drink;
 import com.threejavers.drinkapp.repository.DrinkRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -12,6 +14,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class DrinkService {
 
     private RestTemplate restTemplate = new RestTemplate();
@@ -19,7 +22,6 @@ public class DrinkService {
 
     public List<Drink> getDrinkList(){
         return drinkRepository.findAll();
-        restTemplate.getForObject()
 //        paging implementation from Repository
 //        return drinkRepository.findAllDrinksWithPaging(PageRequest.of(0,4));
     }
@@ -27,5 +29,9 @@ public class DrinkService {
         return drinkRepository.findById(id).orElseThrow();
     }
 
-
+    public Drink getDrink() {
+        Drink response = restTemplate.getForObject("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a", Drink.class);
+        log.info(String.valueOf(response));
+        return null;
+    }
 }
