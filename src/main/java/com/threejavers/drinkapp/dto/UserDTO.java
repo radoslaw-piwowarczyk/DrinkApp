@@ -1,4 +1,4 @@
-package com.threejavers.drinkapp.DTO;
+package com.threejavers.drinkapp.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,9 +9,12 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class IngredientDTO {
+public class UserDTO {
 
     private UUID id;
     private String name;
-    private String measure;
+    private String surname;
+    private String userType;
+    private String login;
+    private String password;
 }

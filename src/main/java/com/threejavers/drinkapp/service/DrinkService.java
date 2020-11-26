@@ -1,7 +1,9 @@
 package com.threejavers.drinkapp.service;
 
-import com.threejavers.drinkapp.DTO.DrinkDTO;
+import com.threejavers.drinkapp.dto.DrinkDTO;
+import com.threejavers.drinkapp.dto.DrinkListDto;
 import com.threejavers.drinkapp.model.Drink;
+import com.threejavers.drinkapp.model.DrinkList;
 import com.threejavers.drinkapp.repository.DrinkRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +20,7 @@ public class DrinkService {
     private RestTemplate restTemplate = new RestTemplate();
     private final DrinkRepository drinkRepository;
 
-    public List<Drink> getDrinkList(){
+    public List<Drink> getDrinkList() {
         return drinkRepository.findAll();
     }
 
@@ -27,8 +29,17 @@ public class DrinkService {
     }
 
     public DrinkDTO getDrink() {
-        String response = restTemplate.getForObject("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a", String.class);
-        log.info(response);
+        DrinkDTO response = restTemplate.getForObject("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita", DrinkDTO.class);
+
+        assert response != null;
+        log.info(response.toString());
+//        if (!response.getDrinkDTOList().isEmpty()) {
+//            List<DrinkDTO> drinkList = response.getDrinkDTOList();
+//            for (DrinkDTO drink : drinkList) {
+//                log.info(drink.toString());
+//            }
+//        }
+//        log.info(response);
         return null;
     }
 }

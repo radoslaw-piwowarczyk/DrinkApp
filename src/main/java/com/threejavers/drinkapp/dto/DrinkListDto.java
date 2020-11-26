@@ -1,16 +1,16 @@
-package com.threejavers.drinkapp.DTO;
+package com.threejavers.drinkapp.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryDTO {
+public class DrinkListDto {
 
-    private UUID id;
-    private String name;
+    private List<DrinkDTO> drinkDTOList;
+
 }

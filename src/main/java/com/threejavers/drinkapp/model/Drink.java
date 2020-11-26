@@ -1,8 +1,6 @@
 package com.threejavers.drinkapp.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.sun.istack.NotNull;
-import com.threejavers.drinkapp.DTO.DrinkDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -70,4 +68,20 @@ public class Drink {
 
     @ManyToMany(mappedBy = "favouriteDrinkList")
     private List<User> users = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Drink{" +
+                "name='" + name + '\'' +
+                ", isCustom=" + isCustom +
+                ", isApproved=" + isApproved +
+                ", recipe='" + recipe + '\'' +
+                ", drinkType='" + drinkType + '\'' +
+                ", glassType='" + glassType + '\'' +
+                ", modificationDate='" + modificationDate + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", category=" + category +
+                ", ingredientList=" + ingredientList +
+                '}';
+    }
 }

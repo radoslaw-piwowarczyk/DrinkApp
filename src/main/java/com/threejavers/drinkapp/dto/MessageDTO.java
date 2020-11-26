@@ -1,4 +1,4 @@
-package com.threejavers.drinkapp.DTO;
+package com.threejavers.drinkapp.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
