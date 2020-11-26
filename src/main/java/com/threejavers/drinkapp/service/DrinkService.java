@@ -3,6 +3,7 @@ package com.threejavers.drinkapp.service;
 import com.threejavers.drinkapp.model.Drink;
 import com.threejavers.drinkapp.repository.DrinkRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public class DrinkService {
 
     public List<Drink> getDrinkList(){
         return drinkRepository.findAll();
+//        paging implementation from Repository
+//        return drinkRepository.findAllDrinksWithPaging(PageRequest.of(0,4));
     }
 
     public Drink getSingleDrink(UUID id) {
