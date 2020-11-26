@@ -1,10 +1,8 @@
 package com.threejavers.drinkapp.model;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +19,8 @@ public class Ingredient {
     private UUID id;
 
     @Column(name = "name", length = 100)
-    @NotNull
     private String name;
 
-    @NotNull
     private String measure;
 
     @ManyToMany(mappedBy = "ingredientList")
