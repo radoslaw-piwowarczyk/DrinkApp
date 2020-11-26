@@ -59,4 +59,6 @@ public class Drink {
 
     @ManyToMany(mappedBy = "favouriteDrinkList")
     private List<User> users = new ArrayList<>();
+
+
 }
