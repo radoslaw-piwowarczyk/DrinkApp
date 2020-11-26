@@ -24,5 +24,6 @@ public class DrinkController {
     @GetMapping("/drinks/{id}")
     public Drink getSingleDrink(@PathVariable UUID id) {
         return drinkService.getSingleDrink(id);
+
     }
 }

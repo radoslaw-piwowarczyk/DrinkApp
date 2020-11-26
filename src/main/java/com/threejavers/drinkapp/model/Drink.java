@@ -1,10 +1,10 @@
 package com.threejavers.drinkapp.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,6 @@ public class Drink {
     private UUID id;
 
     @Column(name = "name", unique = true, length = 100)
-
     private String name;
 
     @Column(name = "is_custom")
