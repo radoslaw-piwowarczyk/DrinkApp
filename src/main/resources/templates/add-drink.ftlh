@@ -28,7 +28,7 @@
 
 
         <figure>
-            <form method="post" action="New-drink" id="mySelect">
+            <form method="post" action="/view/drink" id="mySelect">
                 <fieldset>
                     <legend> Fill all fields</legend>
 

@@ -18,14 +18,14 @@ public class TemplateController {
     public String viewDrink(Model model, Drink drink) {
 
         model.addAttribute("name", drink.getName());
-        model.addAttribute("name", drink.getName());
-        model.addAttribute("name", drink.getName());
-        model.addAttribute("name", drink.getName());
-        model.addAttribute("name", drink.getName());
-        model.addAttribute("name", drink.getName());
-        model.addAttribute("name", drink.getName());
-        model.addAttribute("name", drink.getName());
+//        model.addAttribute("category", drink.getCategory());
+        model.addAttribute("glassType", drink.getGlassType());
+        model.addAttribute("drinkType", drink.getDrinkType());
+        model.addAttribute("imageUrl", drink.getImageUrl());
+        model.addAttribute("recipe", drink.getRecipe());
+        model.addAttribute("ingredient", drink.getIngredientList());
 
-        return null;
+
+        return "drink-view";
     }
 }
