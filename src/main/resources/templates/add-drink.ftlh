@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl" ng-app="agendaEditor">
 <head>
     <title>ADD DRINK</title>
     <meta charset="UTF-8"/>
 
+<#--    CSS-->
     <link href="/styles/style.css" rel="stylesheet" type="text/css">
+
+<#--    JAVA SCRIPT-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular/10.2.0/core.umd.min.js"></script>
+    <script src="/scripts/controller.js"></script>
 
 </head>
 <body ng-controller="formCtrl">
@@ -132,7 +138,7 @@
     </div>
 </section>
 
-
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 </body>
 </html>
