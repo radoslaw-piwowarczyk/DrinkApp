@@ -1,12 +1,12 @@
-package com.threejavers.drinkapp.DTO;
+package com.threejavers.drinkapp.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class MessageDTO {
+public class CategoryDTO {
 
     private Long id;
-    private String message;
+    private String name;
 }
