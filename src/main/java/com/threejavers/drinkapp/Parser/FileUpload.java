@@ -12,7 +12,8 @@ import java.util.Properties;
 @Slf4j
 public class FileUpload{
 
-
+    private static String SETTINGS_FILE = "settings.properties";
+    private static String UPLOAD_KEY = "Upload.Path";
 
     public File uploadFile(Part filePart) throws IOException {
         String filename = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
