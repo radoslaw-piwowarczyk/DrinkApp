@@ -1,6 +1,5 @@
 package com.threejavers.drinkapp.service;
 
-import com.threejavers.drinkapp.DTO.DrinkDTO;
 import com.threejavers.drinkapp.model.Drink;
 import com.threejavers.drinkapp.repository.DrinkRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +25,9 @@ public class DrinkService {
         return drinkRepository.findById(id).orElseThrow();
     }
 
-    public DrinkDTO getDrink() {
-        String response = restTemplate.getForObject("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a", String.class);
-        log.info(response);
+    public Drink getDrink() {
+        Drink response = restTemplate.getForObject("src/main/resources/Coctails/a.json", Drink.class);
+        log.info(String.valueOf(response));
         return null;
     }
 }
