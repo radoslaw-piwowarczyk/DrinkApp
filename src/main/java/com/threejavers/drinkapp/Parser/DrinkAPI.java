@@ -7,13 +7,12 @@ import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 @JsonIgnoreProperties({"strDrinkAlternate", "strDrinkES", "strDrinkDE", "strDrinkFR",
         "strDrinkZH-HANS", "strDrinkZH-HANT", "strTags", "strVideo", "strIBA",
         "strInstructionsES", "strInstructionsDE", "strInstructionsFR", "strInstructionsZH-HANS",
         "strInstructionsZH-HANT", "strDrinkThumb", "strCreativeCommonsConfirmed"})
-@JsonDeserialize(DrinkDeserializer.class)
+@JsonDeserialize(using = DrinkDeserializer.class)
 @Data
 public class DrinkAPI {
     @JsonProperty("idDrink")
