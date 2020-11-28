@@ -4,13 +4,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 public class DrinkDTO {
 
-    private UUID id;
+    private Long id;
     private String name;
     private Boolean isCustom;
     private Boolean isApproved;

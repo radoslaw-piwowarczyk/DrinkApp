@@ -1,28 +1,22 @@
 package com.threejavers.drinkapp.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.sun.istack.NotNull;
-import com.threejavers.drinkapp.DTO.DrinkDTO;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Drink {
 
     @Id
     @GeneratedValue
-    @Type(type = "org.hibernate.type.UUIDCharType")
-    private UUID id;
+//    @Type(type = "org.hibernate.type.UUIDCharType")
+    private Long id;
 
     @Column(name = "name", unique = true, length = 100)
     @NotNull

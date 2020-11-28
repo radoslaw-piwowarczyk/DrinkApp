@@ -17,7 +17,7 @@ import java.util.UUID;
 @Data
 public class DrinkAPI {
     @JsonProperty("idDrink")
-    private UUID id;
+    private Long id;
     @JsonProperty("strDrink")
     private String name;
     @JsonProperty("strInstructions")
