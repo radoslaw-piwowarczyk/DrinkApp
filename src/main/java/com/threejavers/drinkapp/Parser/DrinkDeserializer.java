@@ -18,7 +18,7 @@ import java.util.Properties;
 @Slf4j
 public class DrinkDeserializer extends JsonDeserializer<DrinkAPI> {
     private static final String SETTINGS_FILE_NAME = "settings.properties";
- git
+    private static final String DATE_FORMAT = "date.format";
 
     @Override
     public DrinkAPI deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
