@@ -48,20 +48,20 @@
                         </#if>
                     </datalist>
 
-                    <label for="category-choice">Category: <input list="categories" id="category-choice" type="text"
-                                                                  name="category" required/><br/></label>
+<#--                    <label for="category-choice">Category: <input list="categories" id="category-choice" type="text"-->
+<#--                                                                  name="category" required/><br/></label>-->
 
-                    <datalist id="categories">
-                        <#if categories??>
-                            <#list categories>
-                                <ul>
-                                    <#items as category>
-                                    <option value="${category.getName()}">
-                                        </#items>
-                                </ul>
-                            </#list>
-                        </#if>
-                    </datalist>
+<#--                    <datalist id="categories">-->
+<#--                        <#if categories??>-->
+<#--                            <#list categories>-->
+<#--                                <ul>-->
+<#--                                    <#items as category>-->
+<#--                                    <option value="${category.getName()}">-->
+<#--                                        </#items>-->
+<#--                                </ul>-->
+<#--                            </#list>-->
+<#--                        </#if>-->
+<#--                    </datalist>-->
 
 
                     <label for="glass-choice">Glass: <input list="glasses" id="glass-choice" type="text"

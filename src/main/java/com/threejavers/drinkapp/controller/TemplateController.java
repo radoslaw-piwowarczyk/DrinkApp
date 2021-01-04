@@ -26,6 +26,6 @@ public class TemplateController {
         model.addAttribute("ingredient", drink.getIngredientList());
 
 
-        return "drink-view";
+        return "view-drink";
     }
 }
