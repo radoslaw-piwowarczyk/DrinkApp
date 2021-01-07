@@ -1,7 +1,6 @@
 package com.threejavers.drinkapp.model;
 
-import org.hibernate.engine.internal.Cascade;
-import org.hibernate.stat.CacheableDataStatistics;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,9 +11,10 @@ public class DrinkList {
 
     @Id
     @GeneratedValue
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
 
-    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Drink> drinkList;
 
 

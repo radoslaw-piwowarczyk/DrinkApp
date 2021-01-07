@@ -12,5 +12,4 @@ import java.util.List;
 public class DrinkListDto {
 
     private List<DrinkDTO> drinkDTOList;
-
 }

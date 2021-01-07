@@ -1,6 +1,5 @@
 package com.threejavers.drinkapp.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +22,7 @@ public class Drink {
     @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
 
-    @Column(name = "name", unique = true, length = 100)
+    @Column(unique = true, length = 100)
     @NotNull
     private String name;
 
@@ -35,7 +34,7 @@ public class Drink {
     @NotNull
     private Boolean isApproved;
 
-    @Column(name = "recipe", length = 5000)
+    @Column(length = 5000)
     @NotNull
     private String recipe;
 
@@ -69,20 +68,4 @@ public class Drink {
 
     @ManyToMany(mappedBy = "favouriteDrinkList")
     private List<User> users = new ArrayList<>();
-
-    @Override
-    public String toString() {
-        return "Drink{" +
-                "name='" + name + '\'' +
-                ", isCustom=" + isCustom +
-                ", isApproved=" + isApproved +
-                ", recipe='" + recipe + '\'' +
-                ", drinkType='" + drinkType + '\'' +
-                ", glassType='" + glassType + '\'' +
-                ", modificationDate='" + modificationDate + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", category=" + category +
-                ", ingredientList=" + ingredientList +
-                '}';
-    }
 }

@@ -1,7 +1,6 @@
 package com.threejavers.drinkapp.service;
 
 import com.threejavers.drinkapp.model.Drink;
-import com.threejavers.drinkapp.model.DrinkList;
 import com.threejavers.drinkapp.repository.DrinkRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Slf4j
 public class DrinkService {
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
     private final DrinkRepository drinkRepository;
 
     public List<Drink> getDrinkList() {

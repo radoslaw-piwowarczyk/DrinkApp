@@ -3,10 +3,12 @@ package com.threejavers.drinkapp.model;
 import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Entity
@@ -15,8 +17,8 @@ public class Category {
 
     @Id
     @GeneratedValue
-//    @Type(type = "org.hibernate.type.UUIDCharType")
-    private Long id;
+    @Type(type = "org.hibernate.type.UUIDCharType")
+    private UUID id;
 
     @NotNull
     private String name;

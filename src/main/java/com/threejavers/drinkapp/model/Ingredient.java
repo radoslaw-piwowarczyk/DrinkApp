@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -14,10 +15,9 @@ import java.util.List;
 public class Ingredient {
     @Id
     @GeneratedValue
-//    @Type(type = "org.hibernate.type.UUIDCharType")
-    private Long id;
+    private UUID id;
 
-    @Column(name = "name", length = 100)
+    @Column(length = 100)
     @NotNull
     private String name;
 
@@ -26,5 +26,4 @@ public class Ingredient {
 
     @ManyToMany(mappedBy = "ingredientList")
     private List<Drink> drinkList = new ArrayList<>();
-
 }

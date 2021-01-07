@@ -24,15 +24,5 @@ public class DrinkController {
     @GetMapping("/drinks/{id}")
     public Drink getSingleDrink(@PathVariable UUID id) {
         return drinkService.getSingleDrink(id);
-
-    }
-    @GetMapping("/drinki")
-    public Drink getListOfDrinks(){
-        return drinkService.getDrink();
-    }
-
-    @GetMapping("/drink")
-    public List<Drink> getDrinkList1() {
-        return (List<Drink>) drinkService.getDrink();
     }
 }

@@ -1,7 +1,6 @@
 package com.threejavers.drinkapp.Parser;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -21,7 +20,7 @@ public class DrinkDeserializer extends JsonDeserializer<DrinkAPI> {
     private static final String DATE_FORMAT = "date.format";
 
     @Override
-    public DrinkAPI deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+    public DrinkAPI deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
 
         Map<String, String> ingredients = new HashMap<>();
         JsonNode tree = jsonParser.readValueAsTree();
