@@ -1,5 +1,6 @@
 package com.threejavers.drinkapp.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;

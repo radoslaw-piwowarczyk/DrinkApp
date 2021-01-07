@@ -1,7 +1,5 @@
 package com.threejavers.drinkapp.service;
 
-import com.threejavers.drinkapp.dto.DrinkDTO;
-import com.threejavers.drinkapp.dto.DrinkListDto;
 import com.threejavers.drinkapp.model.Drink;
 import com.threejavers.drinkapp.model.DrinkList;
 import com.threejavers.drinkapp.repository.DrinkRepository;
@@ -28,18 +26,9 @@ public class DrinkService {
         return drinkRepository.findById(id).orElseThrow();
     }
 
-    public DrinkDTO getDrink() {
-        DrinkDTO response = restTemplate.getForObject("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita", DrinkDTO.class);
-
-        assert response != null;
-        log.info(response.toString());
-//        if (!response.getDrinkDTOList().isEmpty()) {
-//            List<DrinkDTO> drinkList = response.getDrinkDTOList();
-//            for (DrinkDTO drink : drinkList) {
-//                log.info(drink.toString());
-//            }
-//        }
-//        log.info(response);
+    public Drink getDrink() {
+        Drink response = restTemplate.getForObject("src/main/resources/Coctails/a.json", Drink.class);
+        log.info(String.valueOf(response));
         return null;
     }
 }
