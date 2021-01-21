@@ -1,33 +1,21 @@
 package com.threejavers.drinkapp.service;
 
+
 import com.threejavers.drinkapp.model.Drink;
-import com.threejavers.drinkapp.repository.DrinkRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import com.threejavers.drinkapp.web.dto.DrinkDto;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Set;
 
-@Service
-@RequiredArgsConstructor
-@Slf4j
-public class DrinkService {
-    private final RestTemplate restTemplate = new RestTemplate();
-    private final DrinkRepository drinkRepository;
+public interface DrinkService {
 
-    public List<Drink> getDrinkList() {
-        return drinkRepository.findAll();
-    }
+    void save(DrinkDto drinkDto);
 
-    public Drink getSingleDrink(UUID id) {
-        return drinkRepository.findById(id).orElseThrow();
-    }
+    void delete(String name);
 
-    public Drink getDrink() {
-        Drink response = restTemplate.getForObject("src/main/resources/Coctails/a.json", Drink.class);
-        log.info(String.valueOf(response));
-        return null;
-    }
+    Drink get(String name);
+
+    List<Drink> getAllDrinks();
+
+    Set<String> getUniqueGlass();
 }
