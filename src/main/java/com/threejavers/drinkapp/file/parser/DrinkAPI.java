@@ -1,4 +1,4 @@
-package com.threejavers.drinkapp.Parser;
+package com.threejavers.drinkapp.file.parser;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,22 +15,31 @@ import java.util.Map;
 @JsonDeserialize(using = DrinkDeserializer.class)
 @Data
 public class DrinkAPI {
+
     @JsonProperty("idDrink")
     private Long id;
+
     @JsonProperty("strDrink")
     private String name;
+
     @JsonProperty("strInstructions")
     private String recipe;
+
     @JsonProperty("strCategory")
     private String category;
+
     @JsonProperty("strAlcoholic")
     private String drinkType;
+
     @JsonProperty("strGlass")
     private String glassType;
+
     @JsonProperty("dateModified")
     private String modificationDate;
+
     @JsonProperty("strDrinkThumb")
     private String imageUrl;
 
     private Map<String, String> ingredients = new HashMap<>();
 }
+

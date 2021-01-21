@@ -1,10 +1,9 @@
-package com.threejavers.drinkapp.Parser;
+package com.threejavers.drinkapp.file.parser;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -14,24 +13,16 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
 
-@Slf4j
 public class DrinkDeserializer extends JsonDeserializer<DrinkAPI> {
-    private static final String SETTINGS_FILE_NAME = "settings.properties";
-    private static final String DATE_FORMAT = "date.format";
 
     @Override
     public DrinkAPI deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-
         Map<String, String> ingredients = new HashMap<>();
+        DrinkAPI drinkApi = new DrinkAPI();
         JsonNode tree = jsonParser.readValueAsTree();
-        DrinkAPI drinkAPI = new DrinkAPI();
-
         String[] errors = {"null"};
-
         for (int index = 1; index < 16; index++) {
-            index = (char) index;
-            JsonNode ingredientNode = tree.get("strIngredient" + index);
-
+            JsonNode ingredientNode = tree.get("strIngredient" + (char)index);
             if (ingredientNode == null) {
                 break;
             }
@@ -42,32 +33,28 @@ public class DrinkDeserializer extends JsonDeserializer<DrinkAPI> {
                             tree.get("strMeasure" + index).asText().trim());
                 }
             }
-
         }
-        drinkAPI.setId(tree.get("idDrink").asLong());
-        drinkAPI.setName(tree.get("strDrink").asText());
-        drinkAPI.setRecipe(tree.get("strInstructions").asText());
-        drinkAPI.setCategory(tree.get("strCategory").asText());
-        drinkAPI.setDrinkType(tree.get("strAlcoholic").asText());
-        drinkAPI.setGlassType(tree.get("strGlass").asText());
+        drinkApi.setId(tree.get("idDrink").asLong());
+        drinkApi.setName(tree.get("strDrink").asText());
+        drinkApi.setRecipe(tree.get("strInstructions").asText());
+        drinkApi.setCategory(tree.get("strCategory").asText());
+        drinkApi.setDrinkType(tree.get("strAlcoholic").asText());
+        drinkApi.setGlassType(tree.get("strGlass").asText());
         if ((tree.get("dateModified")).isNull()) {
             String datePattern = getNewDatePattern();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(datePattern);
-            drinkAPI.setModificationDate(LocalDateTime.now().format(formatter));
+            drinkApi.setModificationDate(LocalDateTime.now().format(formatter));
         } else {
-            drinkAPI.setModificationDate(tree.get("dateModified").asText());
+            drinkApi.setModificationDate(tree.get("dateModified").asText());
         }
-        drinkAPI.setImageUrl(tree.get("strDrinkThumb").asText());
-        drinkAPI.setIngredients(ingredients);
-        log.info("Deserialization data from file");
-        return drinkAPI;
+        drinkApi.setImageUrl(tree.get("strDrinkThumb").asText());
+        drinkApi.setIngredients(ingredients);
+        return drinkApi;
     }
 
     private String getNewDatePattern() throws IOException {
         Properties settings = new Properties();
-        settings.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(SETTINGS_FILE_NAME)).openStream());
-        String dateFormat = settings.getProperty(DATE_FORMAT);
-        log.info("Date Time format is: " + dateFormat);
-        return dateFormat;
+        settings.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("settings.properties")).openStream());
+        return settings.getProperty("date.format");
     }
 }
