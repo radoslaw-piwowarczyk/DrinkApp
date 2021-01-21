@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--head fragment-->
+<head th:replace="fragments/head :: head"></head>
+<body>
+
+<!--nav-bar navi-index-->
+<div th:replace="fragments/navi-index :: navi-index"></div>
+
+<section class="splash">
+    <div class="page-intro">
+        <h1 class="main-title">Welcome to Drinks Library!</h1>
+        <h2 class="main-subtitle">DRINK WEB APP</h2>
+        <a class="btn btn-solid" href="#about">CLICK ME</a>
+    </div>
+</section>
+
+<!--about fragment-->
+<div th:replace="fragments/about :: about"></div>
+
+<!--features fragment-->
+<div th:replace="fragments/features :: features"></div>
+
+<section class="statement">
+    <div class="container">
+        <p>Drink or not to drink.. that is the question</p>
+    </div>
+</section>
+
+<!--quotes fragment-->
+<div th:replace="fragments/quotes :: quotes"></div>
+
+<!--gallery fragment-->
+<div th:replace="fragments/gallery :: gallery"></div>
+
+<!--contact fragment-->
+<div th:replace="fragments/contact :: contact"></div>
+
+<!--footer fragment-->
+<div th:replace="fragments/footer :: footer"></div>
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="scripts/main.js"></script>
+
+</body>
+</html>
