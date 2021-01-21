@@ -1,28 +1,29 @@
 package com.threejavers.drinkapp.model;
 
-import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-@Data
 @Entity
+@Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "category")
 public class Category {
 
     @Id
-    @GeneratedValue
-    @Type(type = "org.hibernate.type.UUIDCharType")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @NotNull
+    @Column(length = 50)
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "category", cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<Drink> drinkList = new ArrayList<>();
 }
