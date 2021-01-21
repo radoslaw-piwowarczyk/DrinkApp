@@ -1,0 +1,22 @@
+<div th:fragment="navi-admin" xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <nav class="navigation">
+        <div class="container">
+            <ul>
+                <li><a href="#load">Load file</a></li>
+                <li><a href="#add">Add drink</a></li>
+                <li><a href="#remove">Remove drink</a></li>
+                <li><a href="/"> Home </a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><i class="fa fa-fw fa-user"></i>
+                    Logout</a></li>
+
+                <form action="/drink" method="get">
+                    <input name="name" list="drink-names" class="search" type="text" placeholder="Search.."
+                           onfocus="this.placeholder=''"
+                           onblur="this.placeholder='Search...'" required autocomplete="off">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </ul>
+        </div>
+    </nav>
+</div>
