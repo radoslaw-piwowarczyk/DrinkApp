@@ -1,0 +1,19 @@
+<div th:fragment="navi-index" xmlns:th="http://www.thymeleaf.org">
+    <nav class="navigation">
+        <div class="container">
+            <ul>
+                <li><a href="#about">About application</a></li>
+                <li><a href="#features">Drinks</a></li>
+                <li><a href="#quotes">Recipes</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contacts</a></li>
+            </ul>
+
+            <form method="get" action="/navigation" style="float: none; margin-right: 20px">
+                <input class="btn2" type="submit" name="navigator" value="User"/>
+                <input class="btn2" type="submit" name="navigator" value="Admin"/>
+            </form>
+
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--head fragment-->
+<head th:replace="fragments/head :: head">
+
+    <!--    <title th:value="${drink.getName()}"></title>-->
+
+    <!--    <script>-->
+    <!--        function pageRedirect() {-->
+    <!--            window.location.href = "User-view?page=1";-->
+    <!--        }-->
+    <!--    </script>-->
+
+</head>
+<body>
+
+<nav class="navigation">
+    <div class="container">
+        <ul>
+            <li><a href="#load">Welcome</a></li>
+            <li><a href="#drink">Drink</a></li>
+            <li><a href="#about">About application</a></li>
+            <li><a href="#contact">Contacts</a></li>
+
+            <form action="/drink" method="get">
+                <input name="name" list="drink-names" class="search" placeholder="Search.."
+                       onfocus="this.placeholder=''"
+                       onblur="this.placeholder='Search...'" required>
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+
+            <datalist id="drink-names">
+                <option th:each="drink : ${drinks}" th:value="${drink.getName()}">
+            </datalist>
+        </ul>
+
+        <!--        if favourite.isEmpty-->
+        <div th:if="${favourite.isEmpty()}">
+            <p> Add to favourites </p>
+            <form th:action="@{/favourite-drink?name={name}(name=${drink.getName()})}"
+                  th:object="${drink}"
+                  method="post" style="width: 49%; float: left">
+                <input class="btn2" type="submit" th:value="ADD" style="float: right"/>
+            </form>
+
+            <div style="width: 49%; float: right">
+                <button onclick="pageRedirect()" class="btn2" style="float: left">Main</button>
+            </div>
+
+        </div>
+
+        <!--        elseif favourite.isPresent()>-->
+        <div th:unless="${favourite.isEmpty()}">
+            <p> Remove from Favourites </p>
+            <form th:action="@{/favourite-drink?name={name}(name=${drink.getName()})}"
+                  th:object="${drink}"
+                  method="post" style="width: 49%; float: left">
+                <input class="btn2" type="submit" th:value="REMOVE" style="float: right"/>
+            </form>
+            <div style="width: 49%; float: right">
+                <button onclick="pageRedirect()" class="btn2" style="float: left">Main</button>
+            </div>
+        </div>
+
+
+    </div>
+</nav>
+
+
+<section class="splash" id="load"
+         style="background-image:url('https://images.pexels.com/photos/239466/pexels-photo-239466.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+    <div class="page-intro">
+        <div class="container">
+            <h1 class="main-title" th:text="${drink.getName()}"></h1>
+
+            <div th:if="${message.isPresent()}">
+                <h2 class="main-subtitle" style="color: #eb0000" th:text="${message.get().getInformation()}"></h2>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="add" id="drink">
+    <h2 class="section-title" th:text="${drink.getName()}"></h2>
+    <div class="gallery-wrapper">
+
+        <figure class="add-drink"></figure>
+        <figure class="gallery-item" style="padding: 5px">
+            <img th:src="${drink.getImageUrl()}" alt="image"><br/>
+            <figcaption th:text="${drink.getName()}"></figcaption>
+        </figure>
+
+        <figure class="drink-recipe">
+            <div class="drink">
+                <b th:text="${drink.getName()}"></b>
+                <br/>
+                <b>Recipe: </b><span th:text=" ${drink.getRecipe()}"></span>
+                <br/>
+                <b>Drink type: </b><span th:text="${drink.getDrinkType()}"></span>
+                <br/>
+                <b>Glass type: </b><span th:text="${drink.getGlassType()}"></span>
+                <br/>
+                <b>When added: </b><span th:text="${drink.getModificationDate()}"></span>
+                <br/>
+                <b>Category: </b><span th:text="${drink.getCategory().getName()}"></span>
+                <br/>
+                <br/>
+                <b>Ingredient with measure: </b>
+                <br/>
+                <ul>
+                    <li th:each="ingredient : ${drink.getIngredientList()}"
+                        th:text="${ingredient.getName()} + ' ' +  ${ingredient.getMeasure()}">
+                    </li>
+                </ul>
+            </div>
+        </figure>
+
+        <figure>
+            <div></div>
+        </figure>
+
+    </div>
+</section>
+
+<!--about fragment-->
+<div th:replace="fragments/about :: about"></div>
+
+<section class="statement">
+    <div class="container">
+        <p>Drink or not to drink.. that is the question</p>
+    </div>
+</section>
+
+<!--contact fragment-->
+<div th:replace="fragments/contact :: contact"></div>
+
+<!--footer fragment-->
+<div th:replace="fragments/footer :: footer"></div>
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="scripts/main.js"></script>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.threejavers.drinkapp.model;
 
-import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,48 +11,46 @@ import java.util.List;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "drink", uniqueConstraints = @UniqueConstraint(columnNames = "name"))
 public class Drink {
 
     @Id
-    @GeneratedValue
-//    @Type(type = "org.hibernate.type.UUIDCharType")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", unique = true, length = 100)
-    @NotNull
+    @Column(unique = true, length = 40)
     private String name;
 
     @Column(name = "is_custom")
-    @NotNull
     private Boolean isCustom;
 
     @Column(name = "is_approved")
-    @NotNull
     private Boolean isApproved;
 
-    @Column(name = "recipe", length = 5000)
-    @NotNull
+    @Column(length = 5000)
     private String recipe;
 
     @Column(name = "drink_type")
-    @NotNull
     private String drinkType;
 
     @Column(name = "glass_type")
-    @NotNull
     private String glassType;
 
-    @Column(name = "date_of_modification")
-    @NotNull
+    @Column(name = "modification_date")
     private String modificationDate;
 
     @Column(name = "image_url", length = 1024)
-    @NotNull
     private String imageUrl;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "category_id")
+    @JoinTable(
+            name = "drink_to_category",
+            joinColumns = {@JoinColumn(name = "drink_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id", referencedColumnName = "id")}
+    )
     private Category category;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
@@ -61,7 +60,4 @@ public class Drink {
             inverseJoinColumns = {@JoinColumn(name = "ingredient_id", referencedColumnName = "id")}
     )
     private List<Ingredient> ingredientList = new ArrayList<>();
-
-    @ManyToMany(mappedBy = "favouriteDrinkList")
-    private List<User> users = new ArrayList<>();
 }

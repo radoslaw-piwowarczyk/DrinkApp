@@ -1,30 +1,26 @@
 package com.threejavers.drinkapp.model;
 
-import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
+@Builder
+@Table(name = "ingredients")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Ingredient {
+
     @Id
-    @GeneratedValue
-//    @Type(type = "org.hibernate.type.UUIDCharType")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 100)
-    @NotNull
+    @Column(length = 100)
     private String name;
 
-    @NotNull
     private String measure;
-
-    @ManyToMany(mappedBy = "ingredientList")
-    private List<Drink> drinkList = new ArrayList<>();
-
 }

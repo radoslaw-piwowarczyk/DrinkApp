@@ -1,11 +1,11 @@
 package com.threejavers.drinkapp.repository;
 
-import com.threejavers.drinkapp.model.Drink;
+import com.threejavers.drinkapp.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DrinkRepository extends JpaRepository<Drink, Long> {
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    Drink findByName(String name);
+    Category findByName(String name);
 }
